@@ -148,13 +148,13 @@ runs:
       id: cache_base_image
       uses: actions/cache@v3
       with:
-        path: cached_base_images
+        path: /home/runner/work/cached_base_images
         key: base-image-${{ inputs.base_image }}
     - name: Download base image
       id: download_image
       run: |
         set -e
-        CACHE_DIR="cached_base_images"
+        CACHE_DIR="/home/runner/work/cached_base_images"
         mkdir -p "$CACHE_DIR"
         # Sanitize the base image name to create a valid filename.
         BASE_IMAGE_FILENAME=$(echo "${{ inputs.base_image }}" | sed 's/[^a-zA-Z0-9_.-]/_/g').img
